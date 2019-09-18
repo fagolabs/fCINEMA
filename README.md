@@ -16,4 +16,11 @@ fCINEMA - online movie website
 - 1000 CCU
 - Movie resolution support: 
 
-
+# Refs
+- Sony Crackle
+- Popcornflix
+- Yidio
+- http://keeng.vn/
+- tvhay.org
+- http://www.phimmoi.net/
+- https://xemphimso.tv/
