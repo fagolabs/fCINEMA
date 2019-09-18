@@ -10,6 +10,7 @@ fCINEMA - online movie website
 - Upload/Edit Subtite for uploaded movie
 - Account Management, support 4 roles: Admin, Editor, Operator, User
 - Update new movie weekly
+- Support adding ads banners
 
 # Performance
 - Upto 800 Mbps streaming
