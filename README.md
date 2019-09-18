@@ -14,7 +14,7 @@ fCINEMA - online movie website
 
 # Performance
 - Upto 800 Mbps streaming
-- 1000 CCU
+- Up to 2000 CCU
 - Movie resolution support: 
 
 # Refs
