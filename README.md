@@ -2,8 +2,10 @@ fCINEMA - online movie website
 ---
 
 # Technology Stack
-- MEAN Stack
-- FFmpeg
+- MEAN Stack: https://github.com/SinghDigamber/mean-stack-angular-7-crud-app-example
+- fluent-ffmpeg: https://github.com/fluent-ffmpeg
+- node-fluent-ffmpeg: https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
+- FFmpeg: https://ffmpeg.org/ffmpeg.html
 
 # Features
 - Watching movie online
