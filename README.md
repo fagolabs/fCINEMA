@@ -27,3 +27,4 @@ fCINEMA - online movie website
 - tvhay.org
 - http://www.phimmoi.net/
 - https://xemphimso.tv/
+- https://github.com/clamarque/angular-movies
