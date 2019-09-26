@@ -28,3 +28,4 @@ fCINEMA - online movie website
 - http://www.phimmoi.net/
 - https://xemphimso.tv/
 - https://github.com/clamarque/angular-movies
+- https://medium.com/@cramirez92/build-a-nodejs-cinema-microservice-and-deploying-it-with-docker-part-1-7e28e25bfa8b
