@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+.backtotop{
+  font-size:55px;
+  color:yellow;
+  position:fixed;
+  right:40px;
+  bottom:40px;
+  cursor:pointer;
+}
+
+.showup{
+  visibility: visible;
+  opacity: 1;
+}
