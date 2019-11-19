@@ -1,0 +1,13 @@
+.br{
+  width:100%;
+  height:1px;
+  background-color:black;
+}
+
+.textarea {
+  display: block;
+  max-width: 100%;
+  min-width: 100%;
+  padding: 0.625em;
+  resize: vertical;
+}

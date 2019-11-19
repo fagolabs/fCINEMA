@@ -1,0 +1,27 @@
+<h2>Hello {{name|uppercase}}</h2>
+<form (ngSubmit)="onSubmit();" [formGroup]="movieForm">
+        <input type="number" placeholder="id" formControlName="id"><br><br>
+        <input type="text" placeholder="name" formControlName="name"><br><br>
+        <input type="number" placeholder="release year" formControlName="release_year"><br><br>
+        <input type="number" placeholder="run time" formControlName="run_time"><br><br>
+        <input type="number" placeholder="rate" formControlName="rate"><br><br>
+        <input type="text" placeholder="poster path" formControlName="poster_path"><br><br>
+
+        <div formGroupName="genre">
+            <label><input type="checkbox" formControlName="phimhanhdong">Phim hành động</label><br><br>
+            <label><input type="checkbox" formControlName="phimvientuong">Phim viễn tưởng</label><br><br>
+            <label><input type="checkbox" formControlName="phimchientranh">Phim chiến tranh</label><br><br>
+            <label><input type="checkbox" formControlName="phimhinhsu">Phim hình sự</label><br><br>
+            <label><input type="checkbox" formControlName="phimphieuluu">Phim phiêu lưu</label><br><br>
+            <label><input type="checkbox" formControlName="phimhaihuoc">Phim hài hước</label><br><br>
+            <label><input type="checkbox" formControlName="phimvothuat">Phim võ thuật</label><br><br>
+            <label><input type="checkbox" formControlName="phimkinhdi">Phim kinh dị</label><br><br>
+            <label><input type="checkbox" formControlName="phimhoihopgaycan">Phim hồi hộp-gay cấn</label><br><br>
+            <label><input type="checkbox" formControlName="phimbiansieunhien">Phim bí ẩn-siêu nhiên</label><br><br>
+            <label><input type="checkbox" formControlName="phimcotrang">Phim cổ trang</label><br><br>
+            <label><input type="checkbox" formControlName="phimhoathinh">Phim hoạt hình</label><br><br>
+            <label><input type="checkbox" formControlName="phimchieurap">Phim chiếu rạp</label>
+        </div>
+        <button [disabled]="movieForm.invalid">SUBMIT</button>
+</form>
+      
