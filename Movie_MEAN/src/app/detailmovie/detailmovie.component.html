@@ -1,0 +1,76 @@
+<div class="" style="background-color:#888888	;opacity:1">
+  
+</div >
+
+  <div class="container" *ngFor="let eachMovie of movie">
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-12">
+        <img class="image" src="https://drive.google.com/uc?id={{eachMovie.poster_path}}" alt="No poster"/>
+        <button routerLink="/watchmovie/{{eachMovie.name}}" type="button" class="btn btn-primary mart-20 marl-50">Watch movie</button>
+        <button type="button" class="btn btn-danger mart-20 marl-15"
+          (click)="onSelect()"
+        >Watch Trailer</button>
+        <div *ngIf="selectmovie" class="trailermovie mart-30"><iframe autoplay width="100%" height="280px" src="https://www.youtube.com/embed/NPY5Iq-tCvk?rel=0&autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      </div>
+      <div class="col-md-8 col-sm-6 col-12 background box-shadow">
+        <div class="whitecolor">
+          <h3>{{eachMovie.name}} ({{eachMovie.release_year}})</h3>
+          <h5 class="mart-30">Thời lượng: {{eachMovie.run_time}} phút</h5>
+          <div class="flexbox-between">
+            <h5 class="mart-30">Thể loại:</h5>
+            <button type="button" class="btn btn-danger mart-20 marl-15" *ngFor="let eachGen of genre"
+            >{{eachGen.name}}</button>
+          </div>
+          <div><button type="button" class="btn btn-warning mart-20 fw-600">IMDB: 6</button></div>
+          <div><button type="button" class="btn btn-primary mart-20 float-l">Share in Facebook</button></div>
+          <button type="button" class="btn btn-danger mart-20 marl-5">Like</button>
+          <div class="clear"></div>
+          <div class="fs-20 yellowcolor">
+            <div class="mart-30">
+              <h4>Director: Gary Dauberman</h4>
+
+            </div>
+            <div class="mart-10">
+              <h4>Country: Unite States</h4>
+
+            </div>
+            <div class="mart-10">
+              <h4>Ngày phát hành: 21/7/2019</h4>
+
+            </div>
+            <div class="mart-10 fs-20">Rating:
+              <span class="redcolor fs-20"><i class="fa mar-5 fa-star"></i><i class="fa mar-5 fa-star"></i><i class="fa mar-5 fa-star"></i><i class="fa mar-5 fa-star"></i><i class="fa mar-5 fa-star"></i><i class="fa mar-5 fa-star"></i><i class="fa mar-5 fa-star"></i><i class="fa mar-5 fa-star"></i></span>
+
+              </div>
+          </div>
+          <div class="mart-30 fs-20 bluecolor fw-500">Actor</div>
+          <div class="container mart-20 marb-20">
+            <div class="flexbox">
+                <a href=""><img class="image" src="../../assets/image/6.jpg"/></a>
+                <a href=""><img class="image" src="../../assets/image/7.jpg"/></a>
+                <a href=""><img class="image" src="../../assets/image/8.jpg"/></a>
+                <a href=""><img class="image" src="../../assets/image/9.jpg"/></a>
+                <a href=""><img class="image" src="../../assets/image/10.jpg"/></a>
+                <a href=""><img class="image" src="../../assets/image/4.jpeg"/></a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--
+<div class="backdrop" style="background-image: url(&quot;../../assets/image/16.jpg&quot;);"></div>
+
+<style type="text/css">
+  .backdrop {
+    height: 900px;
+    background-size: cover;
+    background-position: 2% 0;
+    background-repeat: no-repeat;
+    position: relative;
+}
+</style> -->
+
+
+

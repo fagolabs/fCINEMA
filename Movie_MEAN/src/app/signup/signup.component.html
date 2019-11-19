@@ -1,0 +1,8 @@
+<h1>SIGN UP</h1>
+<form (ngSubmit)="onSubmit();" [formGroup]="signupForm">
+    <input type="text" placeholder="User Name" formControlName="userName"><br><br>
+    <input type="password" placeholder="Password" formControlName="passWord"><br><br>
+    <button [disabled]="signupForm.invalid">SIGN UP</button>
+</form>
+<p *ngIf="!success">Tên đăng nhập đã tồn tại</p>
+

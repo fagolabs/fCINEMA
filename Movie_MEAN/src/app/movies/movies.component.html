@@ -1,0 +1,41 @@
+
+      <div class="container">
+        <div class="whitecolor fw-500 mart-20" style="margin-left:-90px"><h3>All Movie</h3></div>
+      </div>
+      <div class="content">
+        <div class="betweencontent marl-10 float-l">
+          <div class="mart-20">
+            <div class="framebetweencontent">
+              <div class="flexbox-between">
+                  <a *ngFor="let eachmovie of movies"
+                      routerLink="/detailmovie/{{eachmovie.id}}">
+                    <div class="card mart-30">
+                      <div class="image">
+                        <img src="https://drive.google.com/uc?id={{eachmovie.poster_path}}" class="card-img-top framecard" alt="No poster">
+                      </div>
+                      <div class="card-body">
+                        <h6 class="card-title">{{eachmovie.name | uppercase}}</h6>
+                        <div><h6>{{eachmovie.run_time}} phút</h6></div>
+                      </div>
+                    </div>
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="container mart-20 marb-60">
+        <div style="float:right">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link blackbackground border-black whitecolor" href="#">Previous</a></li>
+              <li class="page-item"><a class="page-link blackbackground border-black whitecolor" href="#">1</a></li>
+              <li class="page-item"><a class="page-link blackbackground border-black whitecolor" href="#">2</a></li>
+              <li class="page-item"><a class="page-link blackbackground border-black whitecolor" href="#">3</a></li>
+              <li class="page-item"><a class="page-link blackbackground border-black whitecolor" href="#">4</a></li>
+              <li class="page-item"><a class="page-link blackbackground border-black whitecolor" href="#">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>

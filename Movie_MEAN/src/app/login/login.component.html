@@ -1,0 +1,9 @@
+<h2>LOG IN</h2>
+<form (ngSubmit)="onSubmit();" [formGroup]="loginForm">
+    <input type="text" placeholder="User Name" formControlName="userName"><br><br>
+    <input type="password" placeholder="Password" formControlName="passWord"><br><br>
+    <button [disabled]="loginForm.invalid">LOG IN</button><br><br>
+</form>
+<h4>{{error}}</h4>
+<button type="submit" routerLink='/login-facebook'>Login with Facebook</button>
+<h4>Nếu chưa có tài khoản thì đăng kí ở đây! <a routerLink="/signup">SIGN UP</a></h4>

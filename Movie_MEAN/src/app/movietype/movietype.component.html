@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="whitecolor fw-500 mart-20" style="margin-left:-90px"><h3>{{type | uppercase}}</h3></div>
+</div>
+<div class="content">
+  <div class="betweencontent marl-10 float-l">
+    <div class="mart-20">
+      <div class="framebetweencontent">
+        <div class="flexbox-between">
+            <a *ngFor="let eachMovie of movieType"
+                routerLink="/detailmovie/{{eachMovie.id}}">
+              <div class="card mart-30">
+                <div class="image">
+                  <img src="https://drive.google.com/uc?id={{eachMovie.poster_path}}" class="card-img-top framecard" alt="No poster">
+                </div>
+                <div class="card-body">
+                  <h6 class="card-title">{{eachMovie.name | uppercase}}</h6>
+                  <div><h6>{{eachMovie.run_time}} phút</h6></div>
+                </div>
+              </div>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
