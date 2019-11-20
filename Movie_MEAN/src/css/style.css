@@ -1,0 +1,31 @@
+.body{
+	background-color:#191919 !important;
+}
+
+.headerimage{
+	width:200px;
+	height:70px;
+}
+
+.search{
+	background-color:#232323 !important;
+	width:450px !important;
+	border-radius:25px !important;
+	border:1px solid #000000 !important;
+	display:inline !important;
+	margin-left:200px;
+	margin-top:20px;
+}
+
+.submit{
+	background-color:#0F0F0F !important;
+	border-radius:0 25px 25px 0 !important;
+	border:1px solid #000000 !important;
+	margin-left:-71px;
+	vertical-align:inherit !important;
+	color:#A8A8A8 !important;
+}
+
+.footer{
+	background-image:url('../image/5.jpg');
+}
