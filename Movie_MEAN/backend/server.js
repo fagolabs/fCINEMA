@@ -9,9 +9,13 @@ let passport = require('passport');
 let session = require('express-session');
 var FacebookStrategy = require('passport-facebook').Strategy;
 
+
+
 mongoose.Promise = global.Promise;
+mongoose.set('useCreateIndex', true)
 mongoose.connect(dbConfig.db, {
-   useNewUrlParser: true
+   useNewUrlParser: true,
+   useUnifiedTopology: true 
 }).then(() => {
       console.log('Database sucessfully connected')
    },
