@@ -159,7 +159,7 @@ movieRoute.route('/stream/:filename').get((req,res) => {
     const end = parts[1] ? parseInt(parts[1], 10) : fileSize-1
     const chunksize = (end-start)+1
     //trying ffmpeg
-    //const file = fs.createReadStream(video, {start, end})
+    const file = fs.createReadStream(video, {start, end})
    
 
 
@@ -173,26 +173,7 @@ movieRoute.route('/stream/:filename').get((req,res) => {
 
     console.log(range, parts,start,end,head)
     res.writeHead(206, head);
-    //file.pipe(res);
-    var command = ffmpeg(video)
-    .videoCodec('libx264')
-    .withAudioCodec('aac')
-    .format('mp4')
-    .outputOption(['-c:v libx264 -crf 22 -c:a libfaac -movflags faststart'])
-    .on('end', function () {
-
-        console.log('Stream Done');
-
-    })
-
-    .on('error', function (err) {
-
-        console.log('an error happened: ' + err.message);
-
-        res.send(err.message);
-
-    }).output('stream.mp4')
-    .pipe(res, { end: true });
+    file.pipe(res);
   } 
   else {
     const head = {
@@ -200,29 +181,8 @@ movieRoute.route('/stream/:filename').get((req,res) => {
       'Content-Type': 'video/mp4',
     }
     res.writeHead(200, head)
-    var command = ffmpeg(video)
-    .videoCodec('libx264')
-    .withAudioCodec('aac')
-    .format('mp4')
-    .outputOption(['-c:v libx264 -crf 22 -c:a libfaac -movflags faststart'])
-
-    .on('end', function () {
-
-        console.log('Stream Done');
-
-    })
-
-    .on('error', function (err) {
-
-        console.log('an error happened: ' + err.message);
-
-        res.send(err.message);
-
-    })
-    .output('stream.mp4')
-    .pipe(res, { end: true });
     //trying ffmpeg
-    //fs.createReadStream(video).pipe(res)
+    fs.createReadStream(video).pipe(res)
   }
 })
 ////////////
