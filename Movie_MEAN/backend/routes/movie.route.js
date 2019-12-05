@@ -5,6 +5,11 @@ let movieGenreModel = require('../model/MovieGenreModel');
 let userModel = require('../model/UserLocal');
 let passport = require('passport');
 
+let ffmpeg = require('fluent-ffmpeg')
+let fs = require('fs')
+let path = require('path')
+
+
 movieRoute.get('/auth/fb', passport.authenticate('facebook'));
 // movieRoute.get('/auth/fb/callback', passport.authenticate('facebook',{
 //   failureRedirect: '/', successRedirect: '/'
@@ -138,6 +143,87 @@ movieRoute.route('/theater').get((req, res) => {
     }
   })
 })
+
+//////// stream video example
+movieRoute.route('/ffmpeg/:filename').get((req,res) => {
+  const video = path.join(__dirname,'../stream',req.params.filename)
+  // const command = ffmpeg(video).addInputOptions([
+  //   '-re'
+  // ])
+  // .addOptions([
+  //   '-c:v libx264',
+  //   '-c:a aac',
+  //   '-ar 44100',
+  //   '-strict -2',
+  //   '-preset',
+  //   'superfast -tune zerolatency',
+  //   '-f flv'
+  // ]).on('progress', function(progress) {
+  //   console.log('Processing: ' + progress.percent + '% done');
+  // })
+  // .on('end', function() {
+  //   console.log('file has been converted succesfully');
+  // })
+  // .on('error', function(err) {
+  //   console.log('an error happened: ' + err.message);
+  // })
+  // // save to stream
+  // .pipe(res, {end:true});
+  res.contentType('flv');
+  // make sure you set the correct path to your video file storage
+  var proc = ffmpeg(video)
+    // use the 'flashvideo' preset (located in /lib/presets/flashvideo.js)
+    .preset('flashvideo')
+    // setup event handlers
+    .on('end', function() {
+      console.log('file has been converted succesfully');
+    })
+    .on('error', function(err) {
+      console.log('an error happened: ' + err.message);
+    })
+    // save to stream
+    .pipe(res, {end:true});
+})
+//using fs package, trying to do with ffmpeg 
+
+movieRoute.route('/stream/:filename').get((req,res) => {
+  const video = path.join(__dirname,'../stream',req.params.filename)
+  const stat = fs.statSync(video)
+  const fileSize = stat.size
+  const range = req.headers.range
+  if (range) {
+    const parts = range.replace(/bytes=/, "").split("-")
+    const start = parseInt(parts[0], 10)
+    const end = parts[1] ? parseInt(parts[1], 10) : fileSize-1
+    const chunksize = (end-start)+1
+    //trying ffmpeg
+    const file = fs.createReadStream(video, {start, end})
+   
+
+
+    const head = {
+      'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+      'Accept-Ranges': 'bytes',
+      'Content-Length': chunksize,
+      'Content-Type': 'video/mp4',
+    }// define header for http code 206 -> streaming purpose
+
+
+    console.log(range, parts,start,end,head)
+    res.writeHead(206, head);
+    file.pipe(res);
+  } 
+  else {
+    const head = {
+      'Content-Length': fileSize,
+      'Content-Type': 'video/mp4',
+    }
+    res.writeHead(200, head)
+    //trying ffmpeg
+    fs.createReadStream(video).pipe(res)
+  }
+})
+////////////
 function isValid(req, res, next) {
   if(req.isAuthenticated()) next();
   else res.status(401).json({message:'Unauthorized Request'});
