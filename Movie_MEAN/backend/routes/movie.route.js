@@ -145,7 +145,45 @@ movieRoute.route('/theater').get((req, res) => {
 })
 
 //////// stream video example
-
+movieRoute.route('/ffmpeg/:filename').get((req,res) => {
+  const video = path.join(__dirname,'../stream',req.params.filename)
+  // const command = ffmpeg(video).addInputOptions([
+  //   '-re'
+  // ])
+  // .addOptions([
+  //   '-c:v libx264',
+  //   '-c:a aac',
+  //   '-ar 44100',
+  //   '-strict -2',
+  //   '-preset',
+  //   'superfast -tune zerolatency',
+  //   '-f flv'
+  // ]).on('progress', function(progress) {
+  //   console.log('Processing: ' + progress.percent + '% done');
+  // })
+  // .on('end', function() {
+  //   console.log('file has been converted succesfully');
+  // })
+  // .on('error', function(err) {
+  //   console.log('an error happened: ' + err.message);
+  // })
+  // // save to stream
+  // .pipe(res, {end:true});
+  res.contentType('flv');
+  // make sure you set the correct path to your video file storage
+  var proc = ffmpeg(video)
+    // use the 'flashvideo' preset (located in /lib/presets/flashvideo.js)
+    .preset('flashvideo')
+    // setup event handlers
+    .on('end', function() {
+      console.log('file has been converted succesfully');
+    })
+    .on('error', function(err) {
+      console.log('an error happened: ' + err.message);
+    })
+    // save to stream
+    .pipe(res, {end:true});
+})
 //using fs package, trying to do with ffmpeg 
 
 movieRoute.route('/stream/:filename').get((req,res) => {
